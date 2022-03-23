@@ -1,4 +1,3 @@
-import logo from './components/imgs/logo.png';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
