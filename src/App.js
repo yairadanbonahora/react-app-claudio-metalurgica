@@ -1,13 +1,17 @@
-import logo from './logo.svg';
+import logo from './logo.png';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './styles.css';
-import React from 'react';
 import NavbarMine from './components/Navbar';
 
 function App() {
   return (
-    <NavbarMine/>
+      <header>
+        <img src={logo} className="App-logo" alt="logo" />
+        <NavbarMine/>
+      </header>
+      
   );
 }
-
 export default App;
