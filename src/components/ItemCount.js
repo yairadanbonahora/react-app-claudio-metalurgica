@@ -14,11 +14,9 @@ function ItemCount () {
             <h3>Balancín</h3>
             <div>
                 <h6>Cantidad: {initial}</h6>
-                <button onClick={()=> addToCart (initial +1)}>+</button>
-                <button onClick={()=> deleteOne ()}>-</button>
+                <button onClick={()=> addToCart (initial +1)}>Agregar al carrito</button>
+                <button onClick={()=> deleteOne ()}>Quitar una unidad</button>
             </div>
-            
-             
         </div>
     )
 };
