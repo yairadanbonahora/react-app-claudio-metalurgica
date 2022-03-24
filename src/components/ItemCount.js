@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 
 function ItemCount () {
+    
     const [initial, contador] = useState(0);
-    const [stock, setStock] = useState(5);
+    const [stock, setStock] = useState(6);
     
     const click = (type) => {
         if (type === "addToCart") {
@@ -21,8 +22,7 @@ function ItemCount () {
     }
         
     return (
-        <div className="card-producto">
-            <h3>Balancín</h3>
+        <div>
             <div>
                 <h6>Cantidad: {initial}</h6>
                 <button onClick={()=> click ("addToCart")}>Agregar al carrito</button>

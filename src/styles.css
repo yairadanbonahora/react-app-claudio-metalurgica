@@ -3,7 +3,9 @@
     width: 50px;
 }
 
-.card-producto {
-    border: solid 1px;
-    margin: 20px;
+.cardBody {
+    margin: 30px;
+    text-align: center;
+    border: 1px solid black;
+    background-color: rgb(225, 221, 238);
 }
