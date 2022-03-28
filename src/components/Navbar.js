@@ -1,35 +1,25 @@
 import logo from './imgs/logo.png';
 import React from 'react';
 import {Navbar, Nav, NavDropdown, Container} from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
 import CartWidget from './Cart';
+import { Link } from 'react-router-dom';
 
 const NavbarMine = () => {
     return (
         <Navbar bg="light" expand="lg">
         <Container>
-          <LinkContainer to='/'> 
-            <img src={logo} className="App-logo" alt="logo"/>
-            <Navbar.Brand>Metalúrgica Claudio</Navbar.Brand>
-          </LinkContainer>
+          <Link to='/'> <img src={logo} className="App-logo" alt="logo"/></Link>
+          <Navbar.Brand as={Link} to='/'>Metalúrgica Claudio</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-              <LinkContainer to='/'>
-                <Nav.Link>Inicio</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to='/nosotros'><Nav.Link>Nosotros</Nav.Link></LinkContainer>
+              <Nav.Link as={Link} to='/'>Inicio</Nav.Link>
+              <Nav.Link as={Link} to='/nosotros'>Nosotros</Nav.Link>
               <NavDropdown title="Elementos" id="basic-nav-dropdown">
-                <LinkContainer to='/category/maquinas'>
-                <NavDropdown.Item>Máquinas</NavDropdown.Item>
-                </LinkContainer>
-                <LinkContainer to='/category/productos'>
-                <NavDropdown.Item>Productos</NavDropdown.Item>
-                </LinkContainer>
+              <NavDropdown.Item as={Link} to='/category/maquinas'>Máquinas</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='/category/productos'>Productos</NavDropdown.Item>
               </NavDropdown>
-              <LinkContainer to='/contacto'>
-                <Nav.Link>Contacto</Nav.Link>
-              </LinkContainer>
+                <Nav.Link as={Link} to='/contacto'>Contacto</Nav.Link>
             </Nav>
           </Navbar.Collapse>
           <div>

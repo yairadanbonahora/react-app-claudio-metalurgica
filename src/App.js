@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import './styles.css';
-import { BrowserRouter , Routes, Route, MemoryRouter } from 'react-router-dom';
+import { BrowserRouter , Routes, Route } from 'react-router-dom';
 import NavbarMine from './components/Navbar';
 import Nosotros from './components/Nosotros';
 import Contacto from './components/Contacto';
@@ -22,7 +22,7 @@ function App() {
             <Route path='/nosotros' element={<Nosotros/>}></Route>
             <Route path='/contacto' element={<Contacto/>}></Route>
             <Route path='/detail/:itemId' element={<ItemDetailsContainer/>} ></Route>
-            {/* <Route path='*' element={<Error/>}></Route> */}
+            <Route path='*' element={<Error/>}></Route>
           </Routes>
         </BrowserRouter>
     </div>
