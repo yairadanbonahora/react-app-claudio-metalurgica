@@ -10,6 +10,7 @@ const products = [
     description: "Es una máquina",
     price: 500,
     stock: 10, 
+    category: "maquinas",
     },
 
     {id: 2,
@@ -18,6 +19,7 @@ const products = [
     description: "Es una máquina",
     price: 30000,
     stock: 30,
+    category: "maquinas",
     },
 
     {id: 3,
@@ -26,6 +28,7 @@ const products = [
     description: "Son productos",
     price: 1500,
     stock: 20,
+    category: "productos",
     },
 
     {id: 4,
@@ -34,6 +37,7 @@ const products = [
     description: "Es una máquina",
     price: 50000,
     stock: 15,
+    category: "maquinas",
     }
 ];
 export default products;

@@ -9,7 +9,6 @@ const ItemList = ({ items }) => {
         ))}
       </div>
     );
-  };
-  
-  export default ItemList; 
+};
+export default ItemList; 
  

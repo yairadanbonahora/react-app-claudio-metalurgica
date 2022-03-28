@@ -25,10 +25,10 @@ function ItemCount () {
         <div>
             <div>
                 <h6>Cantidad: {initial}</h6>
-                <button onClick={()=> click ("addToCart")}>Agregar al carrito</button>
-                <button onClick={()=> click ("deleteOne")}>Quitar una unidad</button>
+                <button onClick={()=> click ("addToCart")}>+</button>
+                <button onClick={()=> click ("deleteOne")}>-</button>
             </div>
-            <h9>Stock: {stock}</h9>
+            <small>Stock: {stock}</small>
         </div>
     )
 };
