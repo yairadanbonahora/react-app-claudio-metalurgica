@@ -1,13 +1,27 @@
-import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import React, {useState} from 'react';
+import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import ItemCount from './ItemCount';
 
-const ItemDetails = ({item}) => {
-
+const ItemDetails = ({item, id, name, img, price, description}) => {
+    
     const navigate = useNavigate();
     const goBack = () => {
         navigate (-1)
+    }
+
+    const [cantidad, setContador] = useState(0);
+
+    const addToCart = ({id, name, img, price}) => {
+        const itemToCart = {
+            id,
+            name,
+            img,
+            price,
+            cantidad
+        }
+        console.log (itemToCart)
+
     }
 
     return (
@@ -21,8 +35,7 @@ const ItemDetails = ({item}) => {
                 <Card.Title>{item.name}</Card.Title>
                 <Card.Text>{item.description}</Card.Text>
                 <h5>${item.price}</h5>
-                <ItemCount/>
-                <Button variant="primary">Comprar</Button>
+                <ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} />
             </Card.Body>
             </Card>
         </div> 
