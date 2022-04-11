@@ -8,9 +8,6 @@ const ItemDetailsContainer = () => {
     const [item, setItemDetails] = useState([]);
     const {itemId} = useParams ();
 
-    console.log(itemId);
-    console.log(item)
-
     useEffect(() => {
         getData(1000, products)
         .then((data)=>{
@@ -20,7 +17,7 @@ const ItemDetailsContainer = () => {
     
     return (
         <div className="container-xl">
-            <ItemDetails item={item}/>
+            <ItemDetails {...item}/>
         </div>
     )
 }; 

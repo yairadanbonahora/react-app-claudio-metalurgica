@@ -1,9 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { cartContext } from './CartContext';
 import ItemCount from './ItemCount';
+import { Link } from 'react-router-dom';
+import cart from './Cart';
 
-const ItemDetails = ({item, id, name, img, price, description}) => {
+
+const ItemDetails = ({id, name, img, description, price}) => {
     
     const navigate = useNavigate();
     const goBack = () => {
@@ -11,31 +15,43 @@ const ItemDetails = ({item, id, name, img, price, description}) => {
     }
 
     const [cantidad, setContador] = useState(0);
+    const {cart,addItem, isInCart} = useContext (cartContext)
+    console.log (cart)
 
-    const addToCart = ({id, name, img, price}) => {
-        const itemToCart = {
+
+    const addToCart = () => {
+        const itemToCart = { 
             id,
             name,
             img,
             price,
             cantidad
         }
+        addItem (itemToCart)
         console.log (itemToCart)
-
     }
 
     return (
         <div className="col-lg-4 col-md-6">
             <div>
-                <button onClick={goBack}>Atrás</button>
+                <button className="btn outline-secondary mt-3" onClick={goBack}>Volver</button>
+                <hr/>
             </div>
             <Card className="cardBody" style={{ width: '18rem'}}>
-            <Card.Img variant="top" src={item.img}/>
+            <Card.Img variant="top" src={img}/>
             <Card.Body>
-                <Card.Title>{item.name}</Card.Title>
-                <Card.Text>{item.description}</Card.Text>
-                <h5>${item.price}</h5>
-                <ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} />
+                <Card.Title>{name}</Card.Title>
+                <Card.Text>{description}</Card.Text>
+                <h5>${price}</h5>
+                {
+                    !isInCart (id)
+                    ?<ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} />
+                    : <div> <ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} /> <hr/>
+                            <Link to="/cart" className="btn btn-success d-block">Finalizar mi compra</Link>
+                    </div>
+                    
+                }
+                                
             </Card.Body>
             </Card>
         </div> 
