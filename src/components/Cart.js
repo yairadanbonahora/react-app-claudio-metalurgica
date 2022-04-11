@@ -10,7 +10,7 @@ const cart = () => {
             {
                 cartQuantity() === 0
                 ? 'No hay elementos agregados al carrito'
-                :  <div>
+                :  <>
                     <h3>Resumen de compra</h3> <hr/>
                     {
                         cart.map((item)=>(
@@ -27,7 +27,7 @@ const cart = () => {
                     } 
                     <h3> Total de compra: $ {cartTotal()}</h3> <hr/>
                     <button className="btn btn-danger" onClick={emptyCart}>Vaciar carrito</button>
-                </div>
+                </>
             }
            
         </div>

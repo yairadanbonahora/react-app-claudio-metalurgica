@@ -4,8 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { cartContext } from './CartContext';
 import ItemCount from './ItemCount';
 import { Link } from 'react-router-dom';
-import cart from './Cart';
-
 
 const ItemDetails = ({id, name, img, description, price}) => {
     
