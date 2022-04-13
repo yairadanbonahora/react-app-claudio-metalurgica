@@ -1,51 +1,47 @@
 import React, {useState} from 'react';
 
-function ItemCount ({cantidad, setContador, onAdd}) {
-    
-    const [stock, setStock] = useState(10);
+function ItemCount ({cantidad, setContador, onAdd, stock}) {
 
-    // console.log (stock);
-    // console.log (stockDisponible)
-    
+    const [stockI, setStock] = useState(10-1);
     
     const click = (type) => {
         if (type === "addOne") {
-            if (stock >= 1) {
+            if (stockI >= 1) {
                 setContador (cantidad +1);
-                setStock (stock -1); 
+                setStock (stockI -1); 
             }
            
             } else {
-            if (cantidad>=1) {
+            if (cantidad>1) {
                 setContador (cantidad-1);
-                setStock (stock +1);
+                setStock (stockI +1);
             }
         } 
 
     }
 
     const handleClick = () => {
-        if (stock > 0) {
+        if (stockI > 0) {
             onAdd ()
         }
     }
 
     const btnFinishConfig = {
-        className: `btn mt-3 ${stock === 0 ? "btn-secondary" : "btn-success"}`,
+        className: `btn mt-3 ${stockI === 0 ? "btn-secondary" : "btn-success"}`,
         onClick: handleClick,
-        disabled: stock === 0,
+        disabled: stockI === 0,
     };
         
     return (
         <div>
             <div>
-                <button className="btn btn-outline-primary" onClick={()=> click ("deleteOne")} disabled={cantidad===0}>-</button>
+                <button className="btn btn-outline-primary" onClick={()=> click ("deleteOne")} disabled={cantidad===1}>-</button>
                 <span className="mx-2">{cantidad}</span>
                 <button className="btn btn-primary" onClick={()=> click ("addOne")} disabled={stock===0}>+</button>
                 <br/>
-                <button {...btnFinishConfig}> {stock===0 ?"Sin stock" :"Añadir al carrito"}</button>
+                <button {...btnFinishConfig}> {stockI===0 ?"Sin stock" :"Añadir al carrito"}</button>
             </div>
-            <small>Stock: {stock}</small>
+            <small>Stock:{stockI}</small>
         </div>
     )
 };

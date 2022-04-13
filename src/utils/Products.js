@@ -1,10 +1,10 @@
-import imgBalancin from '../components/imgs/balancin.jpg';
-import imgCortadoraFierros from '../components/imgs/cortadora-fierros.jpg';
-import imgDiscos from '../components/imgs/discos.jpg';
-import imgPlegadoraChapas from '../components/imgs/plegadora-chapas.JPEG';
+import imgBalancin from '../imgs/balancin.jpg';
+import imgCortadoraFierros from '../imgs/cortadora-fierros.jpg';
+import imgDiscos from '../imgs/discos.jpg';
+import imgPlegadoraChapas from '../imgs/plegadora-chapas.JPEG';
 
 const products = [
-    {id: 1,
+    {
     name: "Balancín", 
     img: imgBalancin,
     description: "Es una máquina",
@@ -13,7 +13,7 @@ const products = [
     category: "maquinas",
     },
 
-    {id: 2,
+    {
     name: "Cortadora de fierros",
     img: imgCortadoraFierros,
     description: "Es una máquina",
@@ -22,7 +22,7 @@ const products = [
     category: "maquinas",
     },
 
-    {id: 3,
+    {
     name: "Discos",
     img: imgDiscos,
     description: "Son productos",
@@ -31,7 +31,7 @@ const products = [
     category: "productos",
     },
 
-    {id: 4,
+    {
     name: "Plegadora de chapas",
     img: imgPlegadoraChapas,
     description: "Es una máquina",

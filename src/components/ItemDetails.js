@@ -5,14 +5,14 @@ import { cartContext } from './CartContext';
 import ItemCount from './ItemCount';
 import { Link } from 'react-router-dom';
 
-const ItemDetails = ({id, name, img, description, price}) => {
+const ItemDetails = ({id, name, img, description, price, stock}) => {
     
     const navigate = useNavigate();
     const goBack = () => {
         navigate (-1)
     }
 
-    const [cantidad, setContador] = useState(0);
+    const [cantidad, setContador] = useState(1);
     const {cart,addItem, isInCart} = useContext (cartContext)
     console.log (cart)
 
@@ -40,11 +40,12 @@ const ItemDetails = ({id, name, img, description, price}) => {
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>{description}</Card.Text>
+                <h6>Stock real: {stock}</h6>
                 <h5>${price}</h5>
                 {
                     !isInCart (id)
-                    ?<ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} />
-                    : <div> <ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} /> <hr/>
+                    ?<ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart}/>
+                    : <div> <ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart}/> <hr/>
                             <Link to="/cart" className="btn btn-success d-block">Finalizar mi compra</Link>
                     </div>
                     

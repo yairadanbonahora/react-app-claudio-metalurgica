@@ -1,4 +1,4 @@
-import logo from './imgs/logo.png';
+import logo from '../imgs/logo.png';
 import React from 'react';
 import {Navbar, Nav, NavDropdown, Container} from 'react-bootstrap';
 import CartWidget from './CartWidget';
