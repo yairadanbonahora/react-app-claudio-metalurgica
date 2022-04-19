@@ -16,7 +16,6 @@ const ItemDetails = ({id, name, img, description, price, stock}) => {
     const {cart,addItem, isInCart} = useContext (cartContext)
     console.log (cart)
 
-
     const addToCart = () => {
         const itemToCart = { 
             id,
@@ -40,12 +39,12 @@ const ItemDetails = ({id, name, img, description, price, stock}) => {
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>{description}</Card.Text>
-                <h6>Stock real: {stock}</h6>
+                <h6>Stock: {stock}</h6>
                 <h5>${price}</h5>
                 {
                     !isInCart (id)
-                    ?<ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart}/>
-                    : <div> <ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart}/> <hr/>
+                    ?<ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} stock={stock}/>
+                    : <div> <ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} stock={stock}/> <hr/>
                             <Link to="/cart" className="btn btn-success d-block">Finalizar mi compra</Link>
                     </div>
                     

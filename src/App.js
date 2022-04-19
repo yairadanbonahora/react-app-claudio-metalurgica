@@ -12,20 +12,14 @@ import ItemListContainer from './components/ItemListContainer';
 import Error from './components/Error';
 import ItemDetailsContainer from './components/ItemDetailsContainer';
 import { CartProvider } from './components/CartContext';
-import { addDoc, collection } from 'firebase/firestore';
-import { dataBase } from './firebase/Config';
-import products from './utils/Products';
+// import { addDoc, collection } from 'firebase/firestore';
+// import { dataBase } from './firebase/Config';
+// import products from './utils/Products';
 
 function App() {
-
-    // const uploadProducts = () => {
-    //   products.forEach( el => {
-    //     addDoc(collection(dataBase, "products"), el)
-    //   })
-    // }
-
   return (
     <div> 
+      
         <CartProvider>
           <BrowserRouter>
         <NavbarMine/>
