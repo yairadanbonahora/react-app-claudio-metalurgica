@@ -13,34 +13,9 @@ const ItemDetails = ({id, name, img, description, price, stock}) => {
     }
 
     const [cantidad, setContador] = useState(1);
-    const {cart, addItem, isInCart, removeItem} = useContext (cartContext)
-
-    //esto me busca el producto agregado, su cantidad y le suma la nueva
-    const itemInCart = (id) => {
-        const itemFound = cart.find (prod => prod.id === id)
-
-        const itemFoundProperties = {...itemFound}
-        const itemFoundCantidad = itemFoundProperties.cantidad
-        const totalCantidad = (itemFoundCantidad + cantidad)
-
-        // removeItem (itemFound)
-        
-        const itemEditCart = {
-            id, name, img, price, totalCantidad
-        }
-        //me sale NaN
-
-        addItem (itemEditCart)
-    }
+    const {addItem, isInCart} = useContext (cartContext)
     
     const addToCart = () => {
-
-        if (isInCart(id)) {
-            itemInCart(id)
-                       
-            //me falta mostrar la suma en el cart o lo borro al anterior y dibujo esto nuevo 
-           
-        } else {
            const itemToCart = { 
             id,
             name,
@@ -49,7 +24,6 @@ const ItemDetails = ({id, name, img, description, price, stock}) => {
             cantidad
         }
         addItem (itemToCart) 
-        }
     }
 
     return (
@@ -59,7 +33,7 @@ const ItemDetails = ({id, name, img, description, price, stock}) => {
                 <hr/>
             </div>
             <Card className="cardBody">
-            <Card.Img variant="top" src={img} weight="400px" height="500px"/>
+            <Card.Img variant="top" weight="60px" height="380px" src={img}/>
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>{description}</Card.Text>
@@ -67,8 +41,9 @@ const ItemDetails = ({id, name, img, description, price, stock}) => {
                 {
                     !isInCart (id)
                     ?<ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} stock={stock}/>
-                    : <div> <ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} stock={stock}/> <hr/>
-                            <Link to="/cart" className="btn btn-success d-block">Finalizar mi compra</Link>
+                    : <div>
+                        <ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} stock={stock}/><hr/>
+                        <Link to="/cart" className="btn btn-success d-block">Finalizar mi compra</Link>
                     </div>
                     
                 }

@@ -7,8 +7,15 @@ export const CartProvider = ({children}) => {
 
     const [cart, setCart] = useState([]);
   
-    const addItem = (itemToCart) => {
-        setCart ([...cart, itemToCart])
+    const addItem = (item) => {
+        const itemFound = cart.findIndex((cartItem) => cartItem.id === item.id)
+        if (itemFound !== -1) {
+            const newCart = [...cart];
+            newCart[itemFound].cantidad = newCart[itemFound].cantidad + item.cantidad;
+            setCart(newCart);
+        } else {
+           setCart ([...cart, item]) 
+        }
     }
 
     const isInCart = (id) => {

@@ -23,7 +23,7 @@ const checkout = () => {
         })
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const order = {
@@ -38,7 +38,7 @@ const checkout = () => {
         const orderRef = collection(dataBase, "orders")
         const productsRef = collection(dataBase, "products")
         const q = query(productsRef, where(documentId(), 'in', cart.map((item) => item.id)))
-        const products = getDocs(q)
+        const products = await getDocs(q)
 
         const outOfStock = []
 
@@ -62,13 +62,13 @@ const checkout = () => {
                     emptyCart()
                 })
         } else {
-            alert (`sin stock de item ${outOfStock.itemInCart}`)
+            return <h2>Sin stock de item ${outOfStock.itemInCart}</h2>
         }
     }
 
     if (orderId) {
-        return <div className="container">
-            <h3>Su número de orden es {orderId} </h3>
+        return <div className="msj-success">
+            <h3>¡Gracias por su compra! Su número de orden es {orderId} </h3>
         </div>
     }
 
@@ -78,15 +78,18 @@ const checkout = () => {
         
    return (
        <form onSubmit={handleSubmit}>
-           <legend>Complete con tus datos</legend>
+           <legend className="title-page">Complete con sus datos</legend>
            <input name="name" type="name" placeholder="Nombre" required="autofocus" value={values.name} onChange={handleInputChange}
            />
+           <hr/>
 
            <input name="email" type="email" placeholder="Email" required="autofocus" value={values.email} onChange={handleInputChange}
            />
+           <hr/>
 
            <input name="phone" type="phone" placeholder="Celular" required="autofocus" value={values.phone} onChange={handleInputChange}
            />
+           <hr/>
 
         <button className="btn btn-primary" type="submit">Enviar</button>
        </form>

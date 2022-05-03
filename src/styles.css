@@ -16,3 +16,18 @@ body {
 .cart-body {
     color: white
 }
+
+.title-page {
+    color: white;
+    text-align: center;
+    margin: 10px;
+}
+
+.item-in-cart {
+    text-align: center;
+}
+
+.msj-success {
+    margin: 5px;
+    color: rgb(55, 146, 55);
+}

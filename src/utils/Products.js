@@ -1,12 +1,7 @@
-import imgBalancin from '../imgs/balancin.jpg';
-import imgCortadoraFierros from '../imgs/cortadora-fierros.jpg';
-import imgDiscos from '../imgs/discos.jpg';
-import imgPlegadoraChapas from '../imgs/plegadora-chapas.JPEG';
-
 const products = [
     {
     name: "Balancín", 
-    img: imgBalancin,
+    img: "imgs/balancin.jpg",
     description: "Es una máquina",
     price: 500,
     stock: 10, 
@@ -15,7 +10,7 @@ const products = [
 
     {
     name: "Cortadora de fierros",
-    img: imgCortadoraFierros,
+    img: 'imgs/cortadora-fierros.jpg',
     description: "Es una máquina",
     price: 30000,
     stock: 30,
@@ -24,7 +19,7 @@ const products = [
 
     {
     name: "Discos",
-    img: imgDiscos,
+    img: 'imgs/discos.jpg',
     description: "Son productos",
     price: 1500,
     stock: 20,
@@ -33,7 +28,7 @@ const products = [
 
     {
     name: "Plegadora de chapas",
-    img: imgPlegadoraChapas,
+    img: 'imgs/plegadora-chapas.JPEG',
     description: "Es una máquina",
     price: 50000,
     stock: 15,

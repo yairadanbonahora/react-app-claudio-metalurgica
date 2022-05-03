@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import {Link} from 'react-router-dom';
 import { cartContext } from './CartContext';
-import CartWidgetImg from '../imgs/carrito-de-compras.png';
+
 
 const CartWidget = () => {
 
@@ -13,7 +13,7 @@ const CartWidget = () => {
             ? ""
             : <>
                 <Link to="/cart">
-                <img src={CartWidgetImg} className="cartWidget" alt="CartWidget"/>
+                <img src={'https://firebasestorage.googleapis.com/v0/b/metalurgica-claudio.appspot.com/o/carrito-de-compras.png?alt=media&token=12818058-9c22-450e-95bf-2843163081e9'} className="cartWidget" alt="CartWidget"/>
                 </Link>
                 <span>{cartQuantity()}</span>
             </>

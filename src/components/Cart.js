@@ -11,15 +11,14 @@ const cart = () => {
             {
                 cartQuantity() === 0
                 ? <>
-                    <h5 className='mt-3'>Aún no hay elementos agregados al carrito</h5>
-                    <Link to='/'><button className="btn btn-dark">Ir a inicio</button></Link>
-                    </>
+                    <h5 className='m-3'>Aún no hay elementos agregados al carrito</h5>
+                    <Link to='/'><button className="btn btn-dark m-3">Ver productos</button></Link>
+                </>
                 :  <>
-                    <h3>Resumen de compra</h3> <hr/>
+                    <h3 className="title-page">Resumen de compra</h3><hr/>
 
                     {cart.map ((item)=>(
-
-                        <div key={item.id}>
+                        <div key={item.id} className="item-in-cart">
                             <img weight="80px" height="180px" src={item.img}/>
                             <h4>{item.name}</h4>
                             <h6>Precio por unidad: ${item.price}</h6>
@@ -28,7 +27,6 @@ const cart = () => {
                             <button className='btn btn-danger' onClick={()=>removeItem(item.id)}><BsTrash/></button>
                             <hr/>
                         </div>
-
                         ))
                     }              
                     
