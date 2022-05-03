@@ -9,17 +9,16 @@ const CartWidget = () => {
 
     return (
         <div>
-            <Link to="/cart">
-            <img src={CartWidgetImg} className="cartWidget" alt="CartWidget"/>
-        </Link>
-        {
-            cartQuantity() === 0
-            ? ''
-            : <span>{cartQuantity()}</span> 
-        }
-        
-        </div>
-        
+            { cartQuantity() === 0
+            ? ""
+            : <>
+                <Link to="/cart">
+                <img src={CartWidgetImg} className="cartWidget" alt="CartWidget"/>
+                </Link>
+                <span>{cartQuantity()}</span>
+            </>
+            }
+        </div>      
         )
 };
 export default CartWidget;

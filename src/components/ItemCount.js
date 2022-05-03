@@ -1,23 +1,18 @@
 import React, {useState} from 'react';
 
 function ItemCount ({cantidad, setContador, onAdd, stock}) {
-
-    // const [stockI, setStock] = useState(10-1);
     
     const click = (type) => {
         if (type === "addOne") {
             if (stock > cantidad) {
                 setContador (cantidad +1);
-                // setStock (stockI -1); 
             }
            
             } else {
             if (cantidad>1) {
                 setContador (cantidad-1);
-                // setStock (stockI +1);
             }
         } 
-
     }
 
     const handleClick = () => {
@@ -25,12 +20,6 @@ function ItemCount ({cantidad, setContador, onAdd, stock}) {
             onAdd ()
         }
     }
-
-    const btnFinishConfig = {
-        className: `btn mt-3 ${stock === cantidad ? "btn-secondary" : "btn-success"}`,
-        onClick: handleClick,
-        disabled: stock === cantidad,
-    };
         
     return (
         <div>
@@ -39,7 +28,7 @@ function ItemCount ({cantidad, setContador, onAdd, stock}) {
                 <span className="mx-2">{cantidad}</span>
                 <button className="btn btn-primary" onClick={()=> click ("addOne")} disabled={stock===cantidad}>+</button>
                 <br/>
-                <button {...btnFinishConfig}> {stock===cantidad ?"Sin stock" :"Añadir al carrito"}</button>
+                <button className='btn mt-3 btn-success' onClick={handleClick}>Añadir al carrito</button>
             </div>
         </div>
     )

@@ -17,6 +17,16 @@ import { CartProvider } from './components/CartContext';
 // import products from './utils/Products';
 
 function App() {
+
+//subir imagenes al firebase cloud store
+// const storageService = firebase.storage();
+// const ref = storageService.ref();
+// const storageRef = ref.child ('images');
+
+// const uploadTask = () => {
+//   storageRef.put('src/imgs/balancin.jpg')
+// }
+
   return (
     <div> 
       
@@ -38,7 +48,6 @@ function App() {
         </CartProvider>
 
        {/* <button onClick={uploadProducts}>Apretame</button> */}
-
       
     </div>
   );

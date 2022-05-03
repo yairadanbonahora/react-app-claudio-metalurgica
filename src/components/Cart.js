@@ -4,48 +4,34 @@ import {BsTrash} from 'react-icons/bs';
 import {Link} from 'react-router-dom';
 
 const cart = () => {
-    const {cart, cartQuantity, cartTotal, emptyCart, removeItem, isInCart} = useContext(cartContext)
-
-    // const drawCart = (item) => {
-    //     if (isInCart (id)) {
-    //         console.log (`ya existo ${item}`)
-    //     } else {
-    //         cart.map ((item)=>(
-    //             <div>
-    //                 <div key={item.id}>
-    //                 <h4>{item.name}</h4>
-    //                 <h6>Precio por unidad: ${item.price}</h6>
-    //                 <h6>Cantidad: {item.cantidad}</h6>
-    //                 <h5>Total: ${item.price * item.cantidad}</h5>
-    //                 <button className='btn btn-danger' onClick={()=>removeItem(item.id)}><BsTrash/></button>
-    //                 <hr/>
-    //                 </div>
-    //             </div>
-    //         ))
-
-    //     }
-    // }
+    const {cart, cartQuantity, cartTotal, emptyCart, removeItem} = useContext(cartContext)
 
     return (
-        <div>
+        <div className="cart-body">
             {
                 cartQuantity() === 0
-                ? 'No hay elementos agregados al carrito'
+                ? <>
+                    <h5 className='mt-3'>Aún no hay elementos agregados al carrito</h5>
+                    <Link to='/'><button className="btn btn-dark">Ir a inicio</button></Link>
+                    </>
                 :  <>
                     <h3>Resumen de compra</h3> <hr/>
-                    {
-                        cart.map ((item)=>(
-                            <div key={item.id}>
-                                <h4>{item.name}</h4>
-                                <h6>Precio por unidad: ${item.price}</h6>
-                                <h6>Cantidad: {item.cantidad}</h6>
-                                <h5>Total: ${item.price * item.cantidad}</h5>
-                                <button className='btn btn-danger' onClick={()=>removeItem(item.id)}><BsTrash/></button>
-                                <hr/>
-                            </div>
+
+                    {cart.map ((item)=>(
+
+                        <div key={item.id}>
+                            <img weight="80px" height="180px" src={item.img}/>
+                            <h4>{item.name}</h4>
+                            <h6>Precio por unidad: ${item.price}</h6>
+                            <h6>Cantidad: {item.cantidad}</h6>
+                            <h5>Total: ${item.price * item.cantidad}</h5>
+                            <button className='btn btn-danger' onClick={()=>removeItem(item.id)}><BsTrash/></button>
+                            <hr/>
+                        </div>
 
                         ))
-                    }               
+                    }              
+                    
                     <h3> Total de compra: $ {cartTotal()}</h3> <hr/>
                     <button className="btn btn-danger" onClick={emptyCart}>Vaciar carrito</button>
                     <Link to='/checkout'><button className="btn btn-success">Finalizar compra</button></Link>

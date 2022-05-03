@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, getDoc, Timestamp, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, documentId, getDoc, getDocs, query, Timestamp, updateDoc, where, writeBatch } from "firebase/firestore";
 import { dataBase } from '../firebase/Config';
 import React, { useContext, useState } from "react";
 import { cartContext } from "./CartContext";
@@ -33,29 +33,37 @@ const checkout = () => {
             fyh: Timestamp.fromDate(new Date())
         }
 
+
+        const batch = writeBatch(dataBase)
         const orderRef = collection(dataBase, "orders")
+        const productsRef = collection(dataBase, "products")
+        const q = query(productsRef, where(documentId(), 'in', cart.map((item) => item.id)))
+        const products = getDocs(q)
 
-        // cart.forEach((item) => {
-        //     const docRef = doc(dataBase, "products", item.id)
+        const outOfStock = []
 
-        //     getDoc(docRef)
-        //         .then ((doc) => {
-        //             if (doc.data().stock >= item.cantidad) {
-        //               updateDoc(docRef, {
-        //                 stock: doc.data().stock - item.cantidad
-        //             })  
-        //             } else {
-        //                alert ("no hay stock") 
-        //             }
-                    
-        //         })
-        // })
+        products.docs.forEach((doc) => {
+            const itemInCart = cart.find ((item) => item.id === doc.id)
 
-        addDoc(orderRef, order)
-            .then ((doc) => {
-                setOrderId(doc.id)
-                emptyCart()
-            })
+            if (doc.data().stock >= itemInCart.cantidad) {
+                batch.update(doc.ref, {
+                    stock: doc.data().stock - itemInCart.cantidad
+                })
+            } else {
+                outOfStock.push(itemInCart)
+            }
+        })
+
+        if (outOfStock.length === 0) {
+            batch.commit()        
+            addDoc(orderRef, order)
+                .then ((doc) => {
+                    setOrderId(doc.id)
+                    emptyCart()
+                })
+        } else {
+            alert (`sin stock de item ${outOfStock.itemInCart}`)
+        }
     }
 
     if (orderId) {

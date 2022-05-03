@@ -16,7 +16,6 @@ const ItemListContainer = () => {
                 const items = resp.docs.map((doc)=>({id: doc.id, ...doc.data()}));
                 setItems(items);
             })  
-
     },[categoryId]);
 
     return (

@@ -9,7 +9,6 @@ export const CartProvider = ({children}) => {
   
     const addItem = (itemToCart) => {
         setCart ([...cart, itemToCart])
-        console.log (cart)
     }
 
     const isInCart = (id) => {

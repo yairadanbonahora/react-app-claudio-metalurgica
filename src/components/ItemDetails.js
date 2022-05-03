@@ -13,34 +13,57 @@ const ItemDetails = ({id, name, img, description, price, stock}) => {
     }
 
     const [cantidad, setContador] = useState(1);
-    const {cart,addItem, isInCart} = useContext (cartContext)
-    console.log (cart)
+    const {cart, addItem, isInCart, removeItem} = useContext (cartContext)
 
+    //esto me busca el producto agregado, su cantidad y le suma la nueva
+    const itemInCart = (id) => {
+        const itemFound = cart.find (prod => prod.id === id)
+
+        const itemFoundProperties = {...itemFound}
+        const itemFoundCantidad = itemFoundProperties.cantidad
+        const totalCantidad = (itemFoundCantidad + cantidad)
+
+        // removeItem (itemFound)
+        
+        const itemEditCart = {
+            id, name, img, price, totalCantidad
+        }
+        //me sale NaN
+
+        addItem (itemEditCart)
+    }
+    
     const addToCart = () => {
-        const itemToCart = { 
+
+        if (isInCart(id)) {
+            itemInCart(id)
+                       
+            //me falta mostrar la suma en el cart o lo borro al anterior y dibujo esto nuevo 
+           
+        } else {
+           const itemToCart = { 
             id,
             name,
             img,
             price,
             cantidad
         }
-        addItem (itemToCart)
-        console.log (itemToCart)
+        addItem (itemToCart) 
+        }
     }
 
     return (
-        <div className="col-lg-4 col-md-6">
+        <div>
             <div>
-                <button className="btn outline-secondary mt-3" onClick={goBack}>Volver</button>
+                <button className="btn btn-dark mt-3" onClick={goBack}>Volver</button>
                 <hr/>
             </div>
-            <Card className="cardBody" style={{ width: '18rem'}}>
-            <Card.Img variant="top" src={img}/>
+            <Card className="cardBody">
+            <Card.Img variant="top" src={img} weight="400px" height="500px"/>
             <Card.Body>
                 <Card.Title>{name}</Card.Title>
                 <Card.Text>{description}</Card.Text>
-                <h6>Stock: {stock}</h6>
-                <h5>${price}</h5>
+                <h5>Precio: ${price}</h5>
                 {
                     !isInCart (id)
                     ?<ItemCount cantidad={cantidad} setContador={setContador} onAdd={addToCart} stock={stock}/>
